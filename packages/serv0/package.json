@@ -1,0 +1,10 @@
+{
+    "name": "servkit-example-serv0",
+    "version": "1.0.0",
+    "author": "Yang G",
+    "license": "MIT",
+    "scripts": {
+    },
+    "dependencies": {
+    }
+}

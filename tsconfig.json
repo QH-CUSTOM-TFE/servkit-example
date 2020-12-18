@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "module": "esNext",
+        "target": "es5",
+        "noImplicitAny": false,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "sourceMap": true,
+        "jsx": "react",
+        "moduleResolution": "Node",
+        "experimentalDecorators": true,
+        "lib": [
+            "es5",
+            "dom",
+            "es2015.promise"
+        ]
+    },
+    "exclude": [
+        "node_modules",
+    ],
+    "include": [
+        "src/"
+    ],
+    "awesomeTypescriptLoaderOptions": {
+        "reportFiles": [
+            "./src/**/*",
+            "./packages/**/*"
+        ]
+    }
+}

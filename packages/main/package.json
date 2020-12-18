@@ -1,0 +1,12 @@
+{
+    "name": "servkit-example-main",
+    "version": "1.0.0",
+    "author": "Yang G",
+    "main": "index.ts",
+    "license": "MIT",
+    "scripts": {
+    },
+    "dependencies": {
+        
+    }
+}
