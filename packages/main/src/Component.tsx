@@ -16,7 +16,8 @@ import { ApplicationState } from './ApplicationState';
 import axr from './AXR';
 import { ServAppState } from './AXR/app';
 import { App } from './component/app/App';
-import { Scene } from './component/scene/Scene';
+import { sappMGR, ESappType } from 'servkit';
+import { app } from './Application';
 
 interface MapProps {
     apps: ServAppState[];
@@ -37,6 +38,12 @@ interface Props extends MapProps {
 }
 
 class ComponentImpl extends React.Component<Props> {
+    protected elScene = React.createRef<HTMLDivElement>();
+
+    componentDidMount() {
+        app().sceneContainerDeferred.resolve(this.elScene);
+    }
+
     public render() {
         return (
             <Layout className="root">
@@ -55,7 +62,7 @@ class ComponentImpl extends React.Component<Props> {
         return (
             <Content className="group-content scene-content">
                 <Divider orientation="left">场景</Divider>
-                <Scene />
+                <div ref={this.elScene}></div>
             </Content>
         );
     }

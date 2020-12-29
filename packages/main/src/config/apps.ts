@@ -5,7 +5,7 @@ const infos: SappInfo[] = [
         id: 'serv0',
         name: '场景小程序',
         version: '1.0.0',
-        url: '/build-dev/serv0.html',
+        url: 'serv0.html?version=${version}',
         type: ESappType.IFRAME,
         options: {
             //
@@ -15,7 +15,7 @@ const infos: SappInfo[] = [
         id: 'serv1',
         name: '应用1',
         version: '1.0.0',
-        url: '/build-dev/serv1.html',
+        url: 'serv1.html',
         type: ESappType.IFRAME,
         options: {
             //

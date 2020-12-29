@@ -1,8 +1,6 @@
 import { actionCreator, reducersCreator, sagaCreator, axr } from "../setup";
-import { sappMGR, Sapp, SappInfo } from 'servkit';
-import { getAppInfo, getAppList } from '../../config/apps';
-import { ApplicationState } from '../../ApplicationState';
-import { SceneService } from "servkit-example-main-decl";
+import { sappMGR } from 'servkit';
+import { SceneService } from "servkit-example-scene-decl";
 import { throttle } from 'lodash';
 
 
@@ -26,13 +24,11 @@ const emitAutoRotation = throttle((rotation: Rotation) => {
 const updateRotation = actionCreator<Rotation>('updateRotation');
 
 const startAutoRotation = actionCreator.async('startAutoRotation');
-const startAutoRotationSaga = sagaCreator.every(startAutoRotation.started, function*(payload, getState: () => ApplicationState) {
+const startAutoRotationSaga = sagaCreator.every(startAutoRotation.started, function*(payload, getState) {
     const state = getState();
     if (state.scene.autoRotate) {
         return;
     }
-
-    const service = sappMGR.getServiceUnsafe(SceneService);
 
     const animate = () => {
         const state = getState();

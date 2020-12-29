@@ -7,13 +7,12 @@ import { all, spawn } from 'redux-saga/effects';
 import { Provider } from 'react-redux';
 import { Component } from './Component';
 import { ApplicationState } from './ApplicationState';
-import { DeferredUtil } from 'servkit';
+import { sappSDK, SappSDKAsyncLoadStartParams } from 'servkit';
 
 let sInstance: Application;
 
 export class Application {
     private store: Store<ApplicationState>;
-    sceneContainerDeferred = DeferredUtil.create<React.RefObject<HTMLDivElement>>();
     
     constructor() {
         if (sInstance) {
@@ -47,7 +46,7 @@ export class Application {
     }
 
     protected render() {
-        const element = document.getElementById('root');
+        const element = sappSDK.getDefaultStartParams<SappSDKAsyncLoadStartParams>().container!;
         ReactDOM.render(
             React.createElement(
                 Provider, 
@@ -59,6 +58,8 @@ export class Application {
             element
         );
     }
+
+    
 
     protected initRedux() {
         const sagaMiddleware = createSagaMiddleware();

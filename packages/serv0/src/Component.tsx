@@ -10,10 +10,9 @@ import 'antd/lib/divider/style/css';
 import InputNumber from 'antd/lib/input-number';
 import 'antd/lib/input-number/style/css';
 
-import { connect } from 'react-redux';
 import { sappSDK } from 'servkit';
-import { CommonService, SceneService, Rotation } from 'servkit-example-main-decl';
-
+import { CommonService } from 'servkit-example-main-decl';
+import { SceneService, Rotation } from 'servkit-example-scene-decl';
 
 interface State {
     rotation: Rotation;

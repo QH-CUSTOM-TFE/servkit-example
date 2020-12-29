@@ -1,4 +1,4 @@
-import { SceneService, Rotation } from 'servkit-example-main-decl';
+import { SceneService, Rotation } from 'servkit-example-scene-decl';
 import { anno, ServAPIArgs } from 'servkit';
 import axr from '../AXR';
 

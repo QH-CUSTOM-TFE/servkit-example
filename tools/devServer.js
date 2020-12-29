@@ -28,7 +28,7 @@ class Server {
         };
 
         app.use(devMiddleware(compile, options));
-        app.use(hotMiddleware(compile, {}));
+        // app.use(hotMiddleware(compile, {}));
 
         app.listen(devServerConfig.port || 8000);
     }

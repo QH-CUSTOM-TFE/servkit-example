@@ -58,6 +58,9 @@ const configBuilder = (env) => {
         index: [
             path.join(PATH_SOURCE, 'index.ts'),
         ],
+        scene: [
+            path.join(PATH_SOURCE, 'scene.ts'),
+        ],
         serv0: [
             path.join(PATH_SOURCE, 'serv0.ts'),
         ],
@@ -186,6 +189,12 @@ const configBuilder = (env) => {
             title: 'Serv1',
             filename: 'serv1.html',
             chunks: ['serv1', 'manifest'],
+            template: path.join(PATH_SOURCE_RESOUCE_HTML, 'indexTemplate.html'),
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Scene',
+            filename: 'scene.html',
+            chunks: ['scene'],
             template: path.join(PATH_SOURCE_RESOUCE_HTML, 'indexTemplate.html'),
         }),
         new webpack.optimize.CommonsChunkPlugin({

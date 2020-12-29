@@ -1,7 +1,7 @@
 import { app } from "../Application";
 import { ApplicationState } from '../ApplicationState';
 import {
-    createASRContext,
+    createASRContext, ASRSagaCreator,
 } from 'axr/dist/ASR';
 
 const context = createASRContext();
@@ -15,10 +15,10 @@ context.axrSetOptions({
 });
 
 const { axr, axrCombine, axrPartial } = context;
-const actionCreator = context.actionCreatorFactory('MAIN');
+const actionCreator = context.actionCreatorFactory('SCENE');
 const reducersCreator = context.reducersCreator;
 const reducersPartial = context.reducersPartial;
-const sagaCreator = context.sagaCreator;
+const sagaCreator: ASRSagaCreator<ApplicationState> = context.sagaCreator;
 
 export {
     actionCreator,
