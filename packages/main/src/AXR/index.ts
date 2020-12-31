@@ -25,7 +25,7 @@ const startSaga = sagaCreator(start.started, () => {
         version: '1.0.0',
         name: '场景',
         url: '',
-        html: // 'scene.html'
+        html:
         `
         <html>
             <head>
@@ -40,7 +40,7 @@ const startSaga = sagaCreator(start.started, () => {
     });
 
     sappMGR.preload('scene');
-    
+
     app().sceneContainerDeferred.then((ref) => {
         sappMGR.create('scene', {
             layout: {

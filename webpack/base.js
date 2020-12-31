@@ -194,7 +194,7 @@ const configBuilder = (env) => {
         new HtmlWebpackPlugin({
             title: 'Scene',
             filename: 'scene.html',
-            chunks: ['scene'],
+            chunks: ['scene', 'manifest'],
             template: path.join(PATH_SOURCE_RESOUCE_HTML, 'indexTemplate.html'),
         }),
         new webpack.optimize.CommonsChunkPlugin({

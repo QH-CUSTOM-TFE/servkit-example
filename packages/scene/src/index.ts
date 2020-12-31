@@ -1,6 +1,7 @@
 import './index.scss';
 import { Application, app } from './Application';
 import { SappSDK } from 'servkit';
+import { mockConfig } from './mock/sdkmock';
 
 SappSDK.declAsyncLoad('scene',{
     bootstrap: (sdk) => {
@@ -12,7 +13,8 @@ SappSDK.declAsyncLoad('scene',{
             },
             onClose: async () => {
                 app().exit();
-            }
+            },
+            mock: mockConfig
         }).start();
     }
 });

@@ -28,7 +28,7 @@ config.devServer = {
     stats: 'errors-only',
 };
 config.devtool = 'cheap-module-eval-source-map';
-config.entry.index.push('webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000000');
+// config.entry.index.push('webpack-hot-middleware/client?path=/__webpack_hmr&timeout=2000');
 config.plugins.push(new webpack.HotModuleReplacementPlugin());
 config.plugins.push(new CheckerPlugin());
 {
