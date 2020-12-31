@@ -7,18 +7,21 @@ import { all, spawn } from 'redux-saga/effects';
 import { Provider } from 'react-redux';
 import { Component } from './Component';
 import { ApplicationState } from './ApplicationState';
-import { sappSDK, SappSDKAsyncLoadStartParams } from 'servkit';
+import { SappAsyncLoadSDK } from 'servkit';
 
 let sInstance: Application;
 
 export class Application {
     private store: Store<ApplicationState>;
+    private element?: HTMLElement;
+    sappSDK: SappAsyncLoadSDK;
     
-    constructor() {
+    constructor(sappSDK: SappAsyncLoadSDK) {
         if (sInstance) {
             throw new Error('Application instance has created');
         }
 
+        this.sappSDK = sappSDK;
         sInstance = this;
     }
 
@@ -29,6 +32,15 @@ export class Application {
 
     public run() {
         this.render();
+    }
+
+    public exit() {
+        if (this.element) {
+            ReactDOM.unmountComponentAtNode(this.element)
+        }
+        
+        this.sappSDK =  undefined;
+        sInstance = undefined!;
     }
 
     public axrState() {
@@ -46,7 +58,7 @@ export class Application {
     }
 
     protected render() {
-        const element = sappSDK.getDefaultStartParams<SappSDKAsyncLoadStartParams>().container!;
+        this.element = this.sappSDK.getDefaultStartParams().container!;
         ReactDOM.render(
             React.createElement(
                 Provider, 
@@ -55,7 +67,7 @@ export class Application {
                 },
                 React.createElement(Component)
             ),
-            element
+            this.element
         );
     }
 

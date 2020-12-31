@@ -20,14 +20,12 @@ const startSaga = sagaCreator(start.started, () => {
         lazy: true,
     });
 
-    appAxr.action.loadServAppInfos.started.dispatch();
-    
-    Promise.all([sappMGR.create({
+    sappMGR.addAppInfo({
         id: 'scene',
         version: '1.0.0',
         name: '场景',
         url: '',
-        html: // '/build-dev/scene.html'
+        html: // 'scene.html'
         `
         <html>
             <head>
@@ -39,15 +37,19 @@ const startSaga = sagaCreator(start.started, () => {
         type: ESappType.ASYNC_LOAD,
         options: {
         }
-    }, {
-        dontStartOnCreate: true,
-    }), app().sceneContainerDeferred]).then(([app, ref]) => {
-        app.getController().setLayoutOptions({
-            container: ref.current,
-        });
-
-        app.start();
     });
+
+    sappMGR.preload('scene');
+    
+    app().sceneContainerDeferred.then((ref) => {
+        sappMGR.create('scene', {
+            layout: {
+                container: ref.current,
+            },
+        });
+    });
+
+    appAxr.action.loadServAppInfos.started.dispatch();
 });
 
 export const action = {

@@ -9,9 +9,7 @@ const startSaga = sagaCreator(start.started, () => {
     sappMGR.addServices([{
         decl: SceneService,
         impl: SceneServiceImpl,
-    }], {
-        lazy: true,
-    });
+    }]);
 });
 
 export const action = {

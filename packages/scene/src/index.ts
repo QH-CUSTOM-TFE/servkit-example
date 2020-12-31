@@ -1,14 +1,18 @@
 import './index.scss';
-import { Application } from './Application';
-import { sappSDK } from 'servkit';
+import { Application, app } from './Application';
+import { SappSDK } from 'servkit';
 
-sappSDK
-.setConfig({
-    onCreate: async () => {
-        const app = new Application();
-        app.init();
-        app.run();
-    },
-    asyncLoadAppId: 'scene',
-})
-.start();
+SappSDK.declAsyncLoad('scene',{
+    bootstrap: (sdk) => {
+        sdk.setConfig({
+            onCreate: async () => {
+                const a = new Application(sdk);
+                a.init();
+                a.run();
+            },
+            onClose: async () => {
+                app().exit();
+            }
+        }).start();
+    }
+});
