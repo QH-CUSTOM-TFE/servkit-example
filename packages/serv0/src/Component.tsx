@@ -64,10 +64,12 @@ export class Component extends React.Component<{}> {
 
     onClickConfirm = () => {
         sappSDK.service(CommonService).then((service) => {
-            service.confirm('Hello Servkit').then(() => {
-                service.message('Yes clicked');
-            }, () => {
-                service.message('No clicked');
+            service.confirm('Hello Servkit').then((yes) => {
+                if (yes) {
+                    service.message('Yes clicked');
+                } else {
+                    service.message('No clicked');
+                }
             });
         });
     }
@@ -107,8 +109,10 @@ export class Component extends React.Component<{}> {
 
     onClickStopAutoRotation = () => {
         sappSDK.service({ scene: SceneService, common: CommonService }).then((services) => {
-            services.common.confirm('确定关闭自动旋转').then(() => {
-                services.scene.stopAutoRotaion();
+            services.common.confirm('确定关闭自动旋转').then((yes) => {
+                if (yes) {
+                    services.scene.stopAutoRotaion();
+                }
             });
         }); 
     }

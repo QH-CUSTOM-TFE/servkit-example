@@ -7,7 +7,7 @@ const infos: SappInfo[] = [
         version: '1.0.0',
         url: 'serv0.html?version=${version}',
         options: {
-            useTerminalId: 'com.servkit.example.serv'
+            useTerminalId: 'com.servkit.example.serv',
         }
     },
     {

@@ -42,28 +42,12 @@ export class Component extends React.Component<{}> {
 
     onClickConfirm = () => {
         sappSDK.service(CommonService).then((service) => {
-            service.confirm('Hello Servkit').then(() => {
-                service.message('Yes clicked');
-            }, () => {
-                service.message('No clicked');
-            });
-        });
-    }
-
-    onClickListenAutoRotation = () => {
-        sappSDK.service(SceneService).then((service) => {
-            const unlisten = service.onAutoRotation.on((rotation) => {
-                this.setState({
-                    rotation: {
-                        x: rotation.x / Math.PI * 180,
-                        y: rotation.y / Math.PI * 180,
-                        z: rotation.z / Math.PI * 180,
-                    },
-                });
-            });
-
-            this.setState({
-                unlisten,
+            service.confirm('Hello Servkit').then((yes) => {
+                if (yes) {
+                    service.message('Yes clicked');
+                } else {
+                    service.message('No clicked');
+                }
             });
         });
     }

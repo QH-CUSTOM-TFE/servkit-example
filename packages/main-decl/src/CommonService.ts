@@ -13,7 +13,7 @@ export class CommonService extends ServService {
     @anno.decl.api({
         timeout: -1,
     })
-    confirm(args: ServAPIArgs<string>): ServAPIRetn {
+    confirm(args: ServAPIArgs<string>): ServAPIRetn<boolean> {
         return API_UNSUPPORT();
     }
 }

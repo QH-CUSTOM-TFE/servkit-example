@@ -12,16 +12,16 @@ export class CommonServiceImpl extends CommonService {
         return API_SUCCEED();
     }
 
-    confirm(args: ServAPIArgs<string>): ServAPIRetn {
-        const deffered = DeferredUtil.create();
+    confirm(args: ServAPIArgs<string>): ServAPIRetn<boolean> {
+        const deffered = DeferredUtil.create<boolean>();
         Modal.confirm({
             title: '确认',
             content: args,
             onCancel: () => {
-                deffered.reject(new Error('cancel'));
+                deffered.resolve(false);
             },
             onOk: () => {
-                deffered.resolve();
+                deffered.resolve(true);
             }
         })
         return deffered;
