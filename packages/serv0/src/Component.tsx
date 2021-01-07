@@ -50,6 +50,8 @@ export class Component extends React.Component<{}> {
                 <div className="group-data-row">Y<InputNumber value={rotation.y} min={0} max={360} step={1} onChange={this.onYChange}></InputNumber></div>
                 <div className="group-data-row">Z<InputNumber value={rotation.z} min={0} max={360} step={1} onChange={this.onZChange}></InputNumber></div>
                 <Button disabled={!!state.unlisten} onClick={this.onClickUpdate}>更新</Button>
+                <Divider orientation="left">跳转</Divider>
+                <div><a href="serv1.html">跳转到子页面</a></div>
             </div>
         )
     }

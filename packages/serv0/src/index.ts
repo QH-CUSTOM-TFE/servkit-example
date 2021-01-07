@@ -7,6 +7,7 @@ import { mockConfig } from './mock/sdkmock';
 
 sappSDK
 .setConfig({
+    useTerminalId: 'com.servkit.example.serv',
     onCreate: async () => {
         const app = new Application();
         app.init();

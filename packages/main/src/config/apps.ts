@@ -6,19 +6,8 @@ const infos: SappInfo[] = [
         name: '场景小程序',
         version: '1.0.0',
         url: 'serv0.html?version=${version}',
-        type: ESappType.IFRAME,
         options: {
-            //
-        }
-    },
-    {
-        id: 'serv1',
-        name: '应用1',
-        version: '1.0.0',
-        url: 'serv1.html',
-        type: ESappType.IFRAME,
-        options: {
-            //
+            useTerminalId: 'com.servkit.example.serv'
         }
     },
     {
@@ -30,7 +19,17 @@ const infos: SappInfo[] = [
         options: {
             isPlainPage: true,
         }
-    }
+    },
+    {
+        id: 'webcc',
+        name: 'webcc',
+        version: '1.0.0',
+        url: 'https://kujiale.windoorcraft.com/draw',
+        type: ESappType.IFRAME,
+        options: {
+            startTimeout: -1,
+        }
+    },
 ];
 
 export function getAppList() {
