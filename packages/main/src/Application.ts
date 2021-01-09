@@ -47,7 +47,18 @@ export class Application {
     }
 
     protected render() {
-        const element = document.getElementById('root');
+        let element = document.getElementById('root');
+        if (!element) {
+            element = document.createElement('div');
+            element.style.position = 'absolute';
+            element.style.left = '0';
+            element.style.top = '0';
+            element.style.width = '800px';
+            element.style.height = '600px';
+            element.style.zIndex = '100000';
+            
+            document.body.appendChild(element);
+        }
         ReactDOM.render(
             React.createElement(
                 Provider, 

@@ -60,20 +60,24 @@ export class App extends React.Component<Props, State> {
     }
 
     onClickShow() {
-        this.props.data.app.show().then(() => {
-            this.setState({
-                showButton: false,
-                hideButton: true,
-            })
+        this.props.data.app.show().then((yes) => {
+            if (yes) {
+                this.setState({
+                    showButton: false,
+                    hideButton: true,
+                });
+            }
         });
     }
 
     onClickHide() {
-        this.props.data.app.hide().then(() => {
-            this.setState({
-                showButton: true,
-                hideButton: false,
-            })
+        this.props.data.app.hide().then((yes) => {
+            if (yes) {
+                this.setState({
+                    showButton: true,
+                    hideButton: false,
+                });
+            }
         });
     }
 

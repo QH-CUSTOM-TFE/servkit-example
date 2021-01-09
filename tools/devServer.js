@@ -3,6 +3,7 @@ const koaStatic = require('koa-static');
 const koaWebpackMiddle = require('koa-webpack-middleware');
 const webpack = require('webpack');
 const webpackConfig = require('../webpack/development');
+const cors = require('koa2-cors');
 
 const devMiddleware = koaWebpackMiddle.devMiddleware;
 const hotMiddleware = koaWebpackMiddle.hotMiddleware;
@@ -12,7 +13,9 @@ class Server {
         const devServerConfig = webpackConfig.devServer;
 
         const app = new Koa();
+        app.use(cors());
         app.use(koaStatic(process.cwd()));
+        
 
         const compile = webpack(webpackConfig);
         const options = {
