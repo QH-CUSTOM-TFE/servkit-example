@@ -20,16 +20,6 @@ const infos: SappInfo[] = [
             isPlainPage: true,
         }
     },
-    {
-        id: 'webcc',
-        name: 'webcc',
-        version: '1.0.0',
-        url: 'https://kujiale.windoorcraft.com/draw',
-        type: ESappType.IFRAME,
-        options: {
-            startTimeout: -1,
-        }
-    },
 ];
 
 export function getAppList() {
